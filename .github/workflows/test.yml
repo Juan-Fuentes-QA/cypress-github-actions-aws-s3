@@ -1,0 +1,15 @@
+name: E2E Cypress Tests
+
+on: [push, pull_request]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Construir proyecto
+        run: npm run build
+      - name: Ejecutar Cypress
+        run: npx cypress run
